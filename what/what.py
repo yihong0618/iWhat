@@ -1,6 +1,8 @@
 import string
-from rich import print
+from rich.console import Console
 from rich.table import Table
+from rich.style import Style
+from rich.text import Text
 
 import openai
 
@@ -42,10 +44,11 @@ class What:
         desc = desc.replace("。", "。\r\n")
         desc = desc[:-2]
 
-        table = Table(title="What is it AI")
-        table.add_column("What", style="cyan")
-        table.add_column("Maybe", style="red", justify="middle")
-        table.add_column("Desc", justify="left", style="green")
+        console = Console()
+        title = Text("What is it AI", style=Style(color="#268bd2", bold=True))
+        table = Table(title=title, show_lines=False, style="dim")
+        table.add_column("What", style=Style(color="#b58900"))
+        table.add_column("Maybe", style=Style(color="#d33682"), justify="middle")
+        table.add_column("Desc", style=Style(color="#859900"), justify="left")
         table.add_row(self.what, maybe, desc)
-        # print(what)
-        print(table)
+        console.print(table)
