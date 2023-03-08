@@ -1,5 +1,5 @@
 # iWhat
-What is it? Using AI Inspired by pyWhat
+What is it? Using AI Inspired by [pyWhat](https://github.com/bee-san/pyWhat)
 
 ## 安装
 
