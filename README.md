@@ -24,5 +24,10 @@ iwhat ${word}
 3. what 请用单引号包裹
 4. export OPENAI_API_KEY=${your_api_key} or --openai_key ${key}
 
+```
+export OPENAI_API_KEY=${your_api_key}
+iwhat '0x52908400098527886E0F7030069857D2E4169EE7'
+```
+
 ## 赞赏
 谢谢就够了
