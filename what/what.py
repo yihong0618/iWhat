@@ -25,7 +25,7 @@ class What:
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": self.what_prompt}],
         )
-        return completion["choices"][0]["message"]["content"]
+        return completion["choices"][0]["message"]["content"].encode("utf8").decode()
 
     @staticmethod
     def _is_all_punctuations(s):
