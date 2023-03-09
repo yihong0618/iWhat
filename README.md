@@ -2,7 +2,9 @@
 What is it? Using AI Inspired by [pyWhat](https://github.com/bee-san/pyWhat)
 
 ![image](https://user-images.githubusercontent.com/15976103/223741774-a46ffde6-0f32-4f6f-8e6b-fda5bd07a235.png)
-![image](https://user-images.githubusercontent.com/15976103/223742943-67516323-ada8-4035-81f8-bc2c94ad1228.png)
+
+![image](https://user-images.githubusercontent.com/15976103/223898867-b62e692f-427a-4884-9a6a-e2b636a96071.png)
+
 
 
 ## 安装
