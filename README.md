@@ -15,20 +15,30 @@ pip install iwhat
 
 ## 使用
 
+1. 首先，需要提供你的 OpenAI API key 。你可以把它导入到终端环境变量：
+
+```
+export OPENAI_API_KEY=${your_api_key}
+```
+导入后，以后查询到时候，就不用再提供这个参数了。
+
+你也可以在拼接在查询命令行中：
+
+```
+iwhat ${word} --openai_key "sk-xxxxxx"`
+```
+
+2. 查询：
+
+```
 iwhat ${word}
-看截图你就懂了
+```
+**`word` 请用单引号包裹**，例如：`iwhat 'AI'`
 
 ## 注意
 
 1. 能正常联网的环境或 proxy
 2. 如果你遇到了墙需要用 Cloudflare Workers 替换 api_base 请使用 `--api_base ${url}` 来替换。**请注意，此处你输入的api应该是"`https://xxxx/v1`"的字样，域名需要用引号包裹**
-3. what 请用单引号包裹
-4. export OPENAI_API_KEY=${your_api_key} or --openai_key ${key}
-
-```
-export OPENAI_API_KEY=${your_api_key}
-iwhat '0x52908400098527886E0F7030069857D2E4169EE7'
-```
 
 ## 赞赏
 谢谢就够了
