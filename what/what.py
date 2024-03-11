@@ -1,5 +1,6 @@
 import json
 import string
+import os
 from rich.console import Console
 from rich.table import Table
 from rich.style import Style
@@ -11,10 +12,13 @@ from openai import OpenAI
 class What:
     def __init__(self, what, is_en=False, api_base=None):
         self.client = OpenAI()
-        if api_base:
-            self.client = OpenAI(base_url=api_base)
+        if os.environ.get("OPENAI_API_BASE"):
+            self.client = OpenAI(base_url=os.environ.get("OPENAI_API_BASE"))
         else:
-            self.client = OpenAI()
+            if api_base:
+                self.client = OpenAI(base_url=api_base)
+            else:
+                self.client = OpenAI()
 
         self.what = what
         self.is_en = is_en
@@ -54,7 +58,9 @@ class What:
                 what=self.what
             )
         else:
-            maybe_prompt = "这个 `{what}` 最可能是什么？（要求精确些）".format(what=self.what)
+            maybe_prompt = "这个 `{what}` 最可能是什么？（要求精确些）".format(
+                what=self.what
+            )
             desc_prompt = "描述`{what}`最可能是什么".format(what=self.what)
         self.what_prompt = maybe_prompt
         maybe_what = self._to_what()

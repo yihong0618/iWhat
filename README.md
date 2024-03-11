@@ -28,6 +28,7 @@ export OPENAI_API_KEY=${your_api_key}
 iwhat ${word} --openai_key "sk-xxxxxx"`
 ```
 
+
 2. 查询：
 
 ```
@@ -39,6 +40,7 @@ iwhat ${word}
 
 1. 能正常联网的环境或 proxy
 2. 如果你遇到了墙需要用 Cloudflare Workers 替换 api_base 请使用 `--api_base ${url}` 来替换。**请注意，此处你输入的api应该是"`https://xxxx/v1`"的字样，域名需要用引号包裹**
+3. 也可以 `export OPENAI_BASE_URL=xxxxx`
 
 ## 赞赏
 谢谢就够了
