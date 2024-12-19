@@ -29,6 +29,13 @@ def main():
     parser.add_argument(
         "--en", dest="en", action="store_true", help="If use English to answer"
     )
+    
+    parser.add_argument(
+        "--model",
+        dest="model",
+        type=str,
+        help="Specify the model to use. Example: 'gpt-3.5-turbo' or 'gpt-4'. Default is 'gpt-3.5-turbo'."
+    )
 
     options = parser.parse_args()
     PROXY = options.proxy
@@ -40,7 +47,11 @@ def main():
     if not OPENAI_API_KEY:
         raise Exception("OpenAI API key not provided, please google how to obtain it")
 
-    what = What(options.what, is_en=options.en, api_base=options.api_base)
+    OPENAI_API_BASE = options.api_base or env.get("OPENAI_API_BASE")
+
+    MODEL = options.model or env.get("IWHAT_MODEL") or "gpt-3.5-turbo"
+
+    what = What(options.what, is_en=options.en, api_base=OPENAI_API_BASE, api_key=OPENAI_API_KEY, model=MODEL)
     what.show_what()
 
 
