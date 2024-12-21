@@ -10,16 +10,11 @@ from openai import OpenAI
 
 
 class What:
-    def __init__(self, what, is_en=False, api_base=None):
-        self.client = OpenAI()
-        if os.environ.get("OPENAI_API_BASE"):
-            self.client = OpenAI(base_url=os.environ.get("OPENAI_API_BASE"))
-        else:
-            if api_base:
-                self.client = OpenAI(base_url=api_base)
-            else:
-                self.client = OpenAI()
-
+    def __init__(self, what, is_en=False, api_base=None,api_key=None,model=None):
+        
+        self.client = OpenAI(base_url=api_base, api_key=api_key)
+        
+        self.model = model
         self.what = what
         self.is_en = is_en
         self.what_prompt = """
@@ -40,7 +35,7 @@ class What:
 
     def _to_what(self):
         completion = self.client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model=self.model,
             messages=[{"role": "user", "content": self.what_prompt}],
         )
         return completion.choices[0].message.content.encode("utf8").decode()
